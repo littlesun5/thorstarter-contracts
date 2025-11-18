@@ -63,10 +63,34 @@ class BTCPriceMonitor:
             chrome_options.add_argument('--disable-gpu')
             chrome_options.add_argument('--window-size=1920,1080')
             chrome_options.add_argument('--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36')
-            self.driver = webdriver.Chrome(options=chrome_options)
+            
+            # 尝试使用webdriver-manager（如果已安装）
+            try:
+                from webdriver_manager.chrome import ChromeDriverManager
+                from selenium.webdriver.chrome.service import Service
+                service = Service(ChromeDriverManager().install())
+                self.driver = webdriver.Chrome(service=service, options=chrome_options)
+                print("使用webdriver-manager自动管理ChromeDriver")
+            except ImportError:
+                # 如果没有webdriver-manager，尝试系统PATH中的chromedriver
+                # 或者尝试当前目录下的chromedriver
+                try:
+                    self.driver = webdriver.Chrome(options=chrome_options)
+                except:
+                    # 尝试当前目录
+                    import os
+                    current_dir = os.path.dirname(os.path.abspath(__file__))
+                    chromedriver_path = os.path.join(current_dir, 'chromedriver')
+                    if os.path.exists(chromedriver_path) or os.path.exists(chromedriver_path + '.exe'):
+                        from selenium.webdriver.chrome.service import Service
+                        service = Service(chromedriver_path if os.path.exists(chromedriver_path) else chromedriver_path + '.exe')
+                        self.driver = webdriver.Chrome(service=service, options=chrome_options)
+                    else:
+                        raise
         except Exception as e:
             print(f"警告: 无法初始化Chrome WebDriver: {e}")
-            print("将尝试使用requests方式获取价格")
+            print("将尝试使用API方式获取价格")
+            print("提示: 安装webdriver-manager可以自动管理ChromeDriver: pip install webdriver-manager")
             self.driver = None
     
     def fetch_backpack_price(self):
