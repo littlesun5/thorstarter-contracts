@@ -1,0 +1,52 @@
+BTC价差监控工具 - 项目文件说明
+=====================================
+
+核心文件：
+----------
+1. btc_monitor.py
+   - 主程序文件
+   - 包含价格获取、GUI界面、数据记录等所有功能
+   - 直接运行: python3 btc_monitor.py
+
+2. requirements.txt
+   - Python依赖包列表
+   - 安装命令: pip3 install -r requirements.txt
+
+3. start_monitor.sh
+   - 快速启动脚本（自动检查依赖）
+   - 运行: ./start_monitor.sh
+
+文档文件：
+----------
+4. BTC_MONITOR_README.md
+   - 完整的使用文档
+   - 包含功能说明、API文档、故障排除等
+
+5. QUICK_START.md
+   - 快速开始指南
+   - 3步启动，常见问题解答
+
+项目特点：
+----------
+✅ 实时监控Backpack和Lighter的BTC价格
+✅ 自动计算并显示价差
+✅ 每小时自动记录数据
+✅ 图形化界面，操作简单
+✅ 支持导出CSV文件
+✅ 多重API备用方案（高可用性）
+
+快速开始：
+----------
+1. pip3 install -r requirements.txt
+2. sudo apt-get install python3-tk  # Ubuntu/Debian
+3. python3 btc_monitor.py
+
+监控的交易所：
+-------------
+- Backpack Exchange: https://backpack.exchange/trade/BTC_USD_PERP
+- Lighter: https://app.lighter.xyz/trade/BTC
+
+输出文件：
+----------
+- btc_price_diff_*.csv  (导出的历史数据)
+
