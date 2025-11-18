@@ -26,12 +26,48 @@ class PriceFetcher:
         """初始化Selenium WebDriver"""
         try:
             chrome_options = Options()
-            chrome_options.add_argument('--headless')  # 无头模式
+            chrome_options.add_argument('--headless=new')  # 使用新的无头模式
             chrome_options.add_argument('--no-sandbox')
             chrome_options.add_argument('--disable-dev-shm-usage')
             chrome_options.add_argument('--disable-gpu')
+            chrome_options.add_argument('--disable-software-rasterizer')
+            chrome_options.add_argument('--disable-extensions')
+            chrome_options.add_argument('--disable-background-networking')
+            chrome_options.add_argument('--disable-background-timer-throttling')
+            chrome_options.add_argument('--disable-backgrounding-occluded-windows')
+            chrome_options.add_argument('--disable-breakpad')
+            chrome_options.add_argument('--disable-client-side-phishing-detection')
+            chrome_options.add_argument('--disable-default-apps')
+            chrome_options.add_argument('--disable-features=TranslateUI')
+            chrome_options.add_argument('--disable-hang-monitor')
+            chrome_options.add_argument('--disable-popup-blocking')
+            chrome_options.add_argument('--disable-prompt-on-repost')
+            chrome_options.add_argument('--disable-sync')
+            chrome_options.add_argument('--disable-web-resources')
+            chrome_options.add_argument('--metrics-recording-only')
+            chrome_options.add_argument('--no-first-run')
+            chrome_options.add_argument('--safebrowsing-disable-auto-update')
+            chrome_options.add_argument('--enable-automation')
+            chrome_options.add_argument('--password-store=basic')
+            chrome_options.add_argument('--use-mock-keychain')
             chrome_options.add_argument('--window-size=1920,1080')
-            chrome_options.add_argument('user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36')
+            chrome_options.add_argument('user-agent=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36')
+            
+            # 尝试使用chromium-browser
+            import os
+            chromium_paths = [
+                '/usr/bin/chromium-browser',
+                '/usr/bin/chromium',
+                '/usr/bin/google-chrome',
+            ]
+            chromium_binary = None
+            for path in chromium_paths:
+                if os.path.exists(path):
+                    chromium_binary = path
+                    break
+            
+            if chromium_binary:
+                chrome_options.binary_location = chromium_binary
             
             service = Service(ChromeDriverManager().install())
             self.driver = webdriver.Chrome(service=service, options=chrome_options)
