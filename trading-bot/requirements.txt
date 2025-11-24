@@ -1,0 +1,9 @@
+requests>=2.31.0
+websocket-client>=1.6.4
+numpy>=1.24.0
+pandas>=2.0.0
+python-dotenv>=1.0.0
+ccxt>=4.1.0
+talib-binary>=0.4.24
+schedule>=1.2.0
+colorlog>=6.7.0
