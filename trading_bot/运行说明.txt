@@ -1,0 +1,90 @@
+========================================
+BTC RSI 自动交易机器人 - 运行说明
+========================================
+
+【快速开始】
+
+1. 安装依赖：
+   cd /workspace/trading_bot
+   pip install -r requirements.txt
+
+2. 配置API密钥：
+   cp .env.example .env
+   编辑.env文件，填入你的Backpack API密钥
+
+3. 测试连接：
+   python test_connection.py
+
+4. 启动机器人（模拟模式）：
+   python main.py
+
+
+【文件说明】
+
+主要文件：
+- main.py              启动脚本
+- trading_bot.py       核心交易逻辑
+- config.py            配置参数
+- rsi_calculator.py    RSI计算
+- backpack_api.py      Backpack API
+- binance_api.py       币安API
+
+工具文件：
+- test_connection.py   连接测试
+- install.sh           安装脚本
+
+文档：
+- README.md           完整文档
+- QUICKSTART.md       快速指南
+
+
+【策略说明】
+
+入场：
+- RSI > 71 开空单 0.03 BTC
+- RSI < 29 开多单 0.03 BTC
+
+出场：
+- 利润覆盖手续费时止盈
+- 亏损$1000时止损
+
+加仓：
+- 逆向$150  → 加仓0.05 BTC
+- 逆向$250  → 加仓0.08 BTC
+- 逆向$500  → 加仓0.10 BTC
+- 逆向$800  → 加仓0.15 BTC
+- 逆向$1200 → 加仓0.20 BTC
+- 逆向$1500 → 加仓0.30 BTC
+
+风控：
+- 订单间隔 ≥ 20秒
+- 最大持仓 2 BTC
+- 止损 $1000
+
+
+【监控命令】
+
+查看日志：
+tail -f trading_bot.log
+
+停止机器人：
+按 Ctrl+C
+
+
+【重要提示】
+
+⚠️ 先在模拟模式测试（DRY_RUN=true）
+⚠️ 充分理解策略后再用真实资金
+⚠️ 马丁格尔策略风险极高
+⚠️ 不要投入超过可承受损失的资金
+
+
+【获取帮助】
+
+- 查看完整文档：cat README.md
+- 查看快速指南：cat QUICKSTART.md
+- 查看项目总结：cat /workspace/PROJECT_SUMMARY.md
+- 查看开始指南：cat /workspace/START_HERE.md
+
+
+祝交易顺利！
