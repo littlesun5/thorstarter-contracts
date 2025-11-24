@@ -3,3 +3,7 @@ node_modules
 #Hardhat files
 cache
 artifacts
+
+# Trading bot environment variables
+trading-bot/.env
+.env
