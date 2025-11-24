@@ -9,7 +9,8 @@
     "test": "test"
   },
   "scripts": {
-    "test": "hardhat test"
+    "test": "hardhat test",
+    "monitor:btc": "node scripts/monitorBtcSpread.js"
   },
   "dependencies": {
     "@nomiclabs/hardhat-etherscan": "2.1.2",
@@ -19,6 +20,7 @@
     "ethers": "5.1.4",
     "hardhat": "2.2.1",
     "hardhat-gas-reporter": "1.0.4",
+    "node-notifier": "^10.0.1",
     "solidity-coverage": "0.7.16"
   },
   "devDependencies": {
