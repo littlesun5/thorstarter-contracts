@@ -1,0 +1,29 @@
+{
+  "name": "btc-price-monitor",
+  "version": "1.0.0",
+  "description": "BTC价差监控工具 - 监控Backpack和Lighter交易所的BTC价格差异",
+  "main": "proxy-server.js",
+  "scripts": {
+    "start": "node proxy-server.js",
+    "dev": "nodemon proxy-server.js"
+  },
+  "keywords": [
+    "btc",
+    "bitcoin",
+    "price",
+    "monitor",
+    "backpack",
+    "lighter",
+    "crypto"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "axios": "^1.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
