@@ -9,16 +9,19 @@
     "test": "test"
   },
   "scripts": {
-    "test": "hardhat test"
+    "test": "hardhat test",
+    "monitor:btc": "node scripts/btcPriceMonitor.js"
   },
   "dependencies": {
     "@nomiclabs/hardhat-etherscan": "2.1.2",
     "@nomiclabs/hardhat-solhint": "2.0.0",
     "@nomiclabs/hardhat-waffle": "2.0.1",
     "@openzeppelin/contracts": "4.1.0",
+    "axios": "^1.13.2",
     "ethers": "5.1.4",
     "hardhat": "2.2.1",
     "hardhat-gas-reporter": "1.0.4",
+    "node-notifier": "^10.0.1",
     "solidity-coverage": "0.7.16"
   },
   "devDependencies": {
