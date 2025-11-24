@@ -9,17 +9,20 @@
     "test": "test"
   },
   "scripts": {
-    "test": "hardhat test"
+    "test": "hardhat test",
+    "bot:rsi": "node bots/backpackRsiBot.js"
   },
   "dependencies": {
     "@nomiclabs/hardhat-etherscan": "2.1.2",
     "@nomiclabs/hardhat-solhint": "2.0.0",
     "@nomiclabs/hardhat-waffle": "2.0.1",
     "@openzeppelin/contracts": "4.1.0",
+    "dotenv": "^16.4.5",
     "ethers": "5.1.4",
     "hardhat": "2.2.1",
     "hardhat-gas-reporter": "1.0.4",
-    "solidity-coverage": "0.7.16"
+    "solidity-coverage": "0.7.16",
+    "tweetnacl": "^1.0.3"
   },
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "2.0.2",
